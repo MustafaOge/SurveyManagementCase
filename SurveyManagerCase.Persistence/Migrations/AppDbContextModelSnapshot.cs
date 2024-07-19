@@ -36,9 +36,6 @@ namespace SurveyManagement.Persistence.Migrations
                     b.Property<int>("CreatedByUser")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<int>("QuestionId")
                         .HasColumnType("integer");
 
@@ -107,9 +104,6 @@ namespace SurveyManagement.Persistence.Migrations
                     b.Property<int>("CreatedByUser")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("text");
@@ -123,9 +117,6 @@ namespace SurveyManagement.Persistence.Migrations
 
                     b.Property<int?>("UpdatedByUser")
                         .HasColumnType("integer");
-
-                    b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 

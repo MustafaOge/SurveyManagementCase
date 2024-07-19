@@ -1,5 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using SurveyManagement.API.Extensions;
+using SurveyManagement.Application;
+using SurveyManagement.Application.Features.Commands.Survey.Create;
+using SurveyManagement.Application.Mapping;
 using SurveyManagerCase.Persistence.Context;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +17,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
                                                 options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQL")));
+builder.Services.AddAutoMapper(typeof(MapProfile));
+builder.Services.AddScopedWithExtension();
+
+builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
 
 
 var app = builder.Build();

@@ -1,0 +1,47 @@
+﻿using AutoMapper;
+using MediatR;
+using SurveyManagement.Application.DTOs.Survey;
+using SurveyManagement.Application.Features.Commands.Survey.Create;
+using SurveyManagement.Application.Features.Commands.Survey.Remove;
+using SurveyManagement.Application.Features.Commands.Survey.Update;
+using SurveyManagement.Domain.Entities;
+
+namespace SurveyManagement.Application.Mapping
+{
+    public class MapProfile : Profile
+    {
+        public MapProfile()
+        {
+            CreateMap<Survey, SurveyDto>().ReverseMap();
+
+            // Request to Entity
+            CreateMap<CreateSurveyCommandRequest, Survey>()
+                .ForMember(dest => dest.Created, opt => opt.Ignore()) // Otomatik olarak handler'da ayarlanacak
+                .ForMember(dest => dest.Updated, opt => opt.Ignore()) // Sonra varsayılan değeri ayarlayın
+                .ForMember(dest => dest.CreatedByUser, opt => opt.Ignore()) // Otomatik olarak handler'da ayarlanacak
+                .ForMember(dest => dest.UpdatedByUser, opt => opt.Ignore()); // Sonra varsayılan değeri ayarlayın
+
+            // Update Request to Entity
+            CreateMap<UpdateSurveyCommandRequest, SurveyManagement.Domain.Entities.Survey>()
+                .ForMember(dest => dest.Created, opt => opt.Ignore()) // Bu değer güncellenmez
+                .ForMember(dest => dest.CreatedByUser, opt => opt.Ignore()) // Bu değer güncellenmez
+                .ForMember(dest => dest.UpdatedByUser, opt => opt.Ignore()); // Bu değer güncellenmez
+
+            // Entity to Response
+            CreateMap<SurveyManagement.Domain.Entities.Survey, CreateSurveyCommandResponse>()
+                .ForMember(dest => dest.SurveyId, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => src.Created))
+                .ForMember(dest => dest.IsSuccess, opt => opt.Ignore())
+                .ForMember(dest => dest.ErrorMessage, opt => opt.Ignore());
+
+            // Entity to Response for Remove and Update
+            CreateMap<SurveyManagement.Domain.Entities.Survey, RemoveSurveyCommandResponse>()
+                .ForMember(dest => dest.IsSuccess, opt => opt.Ignore())
+                .ForMember(dest => dest.ErrorMessage, opt => opt.Ignore());
+
+            CreateMap<SurveyManagement.Domain.Entities.Survey, UpdateSurveyCommandResponse>()
+                .ForMember(dest => dest.IsSuccess, opt => opt.Ignore())
+                .ForMember(dest => dest.ErrorMessage, opt => opt.Ignore());
+        }
+    }
+}
