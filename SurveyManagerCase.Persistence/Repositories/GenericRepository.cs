@@ -57,12 +57,16 @@ namespace SurveyManagement.Persistence.Repositories
         public void Update(TEntity entity)
         {
             _dbSet.Update(entity);
+            _context.SaveChanges();
+
 
         }
 
         public void Remove(TEntity entity)
         {
             _dbSet.Remove(entity);
+            _context.SaveChanges();
+
         }
 
         public void RemoveRange(IEnumerable<TEntity> items)

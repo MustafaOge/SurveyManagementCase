@@ -32,7 +32,6 @@ namespace SurveyManagement.Application.Features.Commands.Survey.Update
             survey.Updated = DateTime.UtcNow;
 
              _surveyRepository.Update(survey);
-
             return new UpdateSurveyCommandResponse
             {
                 IsSuccess = true

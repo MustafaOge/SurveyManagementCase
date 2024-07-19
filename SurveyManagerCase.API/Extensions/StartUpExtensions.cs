@@ -10,6 +10,10 @@ namespace SurveyManagement.API.Extensions
         {
             services.AddScoped(typeof(IGenericRepository<,>), typeof(GenericRepository<,>));
             services.AddScoped<ISurveyRepository, SurveyRepository>();
+            services.AddScoped<IQuestionRepository, QuestionRepository>();
+            services.AddScoped<IAnswerRepository, AnswerRepository>();
+
+
 
             return services;
         }
