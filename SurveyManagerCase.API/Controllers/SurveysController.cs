@@ -9,10 +9,9 @@ using SurveyManagement.Application.Features.Queries.Survey.GetById;
 namespace SurveyManagement.API.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/v1/[controller]")]
 public class SurveysController(IMediator _mediator) : ControllerBase
 {
-
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CreateSurveyCommandRequest request)
     {
@@ -26,7 +25,6 @@ public class SurveysController(IMediator _mediator) : ControllerBase
         return Ok(response);
     }
 
-    // Update
     [HttpPut("{id}")]
     public async Task<IActionResult> Update(int id, [FromBody] UpdateSurveyCommandRequest request)
     {
@@ -45,7 +43,6 @@ public class SurveysController(IMediator _mediator) : ControllerBase
         return Ok(response);
     }
 
-    // Remove
     [HttpDelete("{id}")]
     public async Task<IActionResult> Remove(int id)
     {
@@ -61,19 +58,16 @@ public class SurveysController(IMediator _mediator) : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetSurveys()
+    public async Task<IActionResult> GetAll()
     {
         var result = await _mediator.Send(new GetSurveysQuery());
         return Ok(result);
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetSurveyById(int id)
+    public async Task<IActionResult> GetById(int id)
     {
         var result = await _mediator.Send(new GetSurveyByIdQuery(id));
         return result != null ? Ok(result) : NotFound();
     }
-
-
-
 }

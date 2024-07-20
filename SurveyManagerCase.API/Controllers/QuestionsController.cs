@@ -9,13 +9,10 @@ using SurveyManagement.Application.Features.Queries.Question.GetById;
 namespace SurveyManagement.API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     public class QuestionsController(IMediator mediator) : ControllerBase
     {
-
-       
-
-        // Create
+      
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateQuestionCommandRequest  request)
         {
@@ -26,10 +23,9 @@ namespace SurveyManagement.API.Controllers
                 return BadRequest(new { message = "An error occurred while creating the question." });
             }
 
-            return CreatedAtAction(nameof(GetQuestionById), new { id = response.QuestionId }, response);
+            return CreatedAtAction(nameof(GetById), new { id = response.QuestionId }, response);
         }
 
-        // Update
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] UpdateQuestionCommandRequest request)
         {
@@ -48,7 +44,6 @@ namespace SurveyManagement.API.Controllers
             return Ok(response);
         }
 
-        // Delete
         [HttpDelete("{id}")]
         public async Task<IActionResult> Remove(int id)
         {
@@ -63,17 +58,15 @@ namespace SurveyManagement.API.Controllers
             return NoContent();
         }
 
-        // Get all questions
         [HttpGet]
-        public async Task<IActionResult> GetQuestions()
+        public async Task<IActionResult> GetAll()
         {
             var result = await mediator.Send(new GetQuestionsQuery());
             return Ok(result);
         }
 
-        // Get question by id
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetQuestionById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
             var result = await mediator.Send(new GetQuestionByIdQuery(id));
             return result != null ? Ok(result) : NotFound();

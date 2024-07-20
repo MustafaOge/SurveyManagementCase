@@ -3,7 +3,6 @@ using SurveyManagement.Application.DTOs.Answer;
 using SurveyManagement.Application.DTOs.Question;
 using SurveyManagement.Application.DTOs.Survey;
 using SurveyManagement.Application.Features.Commands.answerRepository.Create;
-using SurveyManagement.Application.Features.Commands.Question.Create;
 using SurveyManagement.Application.Features.Commands.Survey.Create;
 using SurveyManagement.Application.Features.Commands.Survey.Remove;
 using SurveyManagement.Application.Features.Commands.Survey.Update;
@@ -36,16 +35,16 @@ namespace SurveyManagement.Application.Mapping
 
             // Request to Entity
             CreateMap<CreateSurveyCommandRequest, Survey>()
-                .ForMember(dest => dest.Created, opt => opt.Ignore()) // Otomatik olarak handler'da ayarlanacak
-                .ForMember(dest => dest.Updated, opt => opt.Ignore()) // Sonra varsayılan değeri ayarlayın
-                .ForMember(dest => dest.CreatedByUser, opt => opt.Ignore()) // Otomatik olarak handler'da ayarlanacak
-                .ForMember(dest => dest.UpdatedByUser, opt => opt.Ignore()); // Sonra varsayılan değeri ayarlayın
+                .ForMember(dest => dest.Created, opt => opt.Ignore())
+                .ForMember(dest => dest.Updated, opt => opt.Ignore())
+                .ForMember(dest => dest.CreatedByUser, opt => opt.Ignore())
+                .ForMember(dest => dest.UpdatedByUser, opt => opt.Ignore());
 
             // Update Request to Entity
             CreateMap<UpdateSurveyCommandRequest, SurveyManagement.Domain.Entities.Survey>()
-                .ForMember(dest => dest.Created, opt => opt.Ignore()) // Bu değer güncellenmez
-                .ForMember(dest => dest.CreatedByUser, opt => opt.Ignore()) // Bu değer güncellenmez
-                .ForMember(dest => dest.UpdatedByUser, opt => opt.Ignore()); // Bu değer güncellenmez
+                .ForMember(dest => dest.Created, opt => opt.Ignore())
+                .ForMember(dest => dest.CreatedByUser, opt => opt.Ignore())
+                .ForMember(dest => dest.UpdatedByUser, opt => opt.Ignore());
 
             // Entity to Response
             CreateMap<SurveyManagement.Domain.Entities.Survey, CreateSurveyCommandResponse>()

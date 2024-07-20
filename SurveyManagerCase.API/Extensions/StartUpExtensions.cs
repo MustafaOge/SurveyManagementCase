@@ -12,9 +12,6 @@ namespace SurveyManagement.API.Extensions
             services.AddScoped<ISurveyRepository, SurveyRepository>();
             services.AddScoped<IQuestionRepository, QuestionRepository>();
             services.AddScoped<IAnswerRepository, AnswerRepository>();
-
-
-
             return services;
         }
 

@@ -9,10 +9,9 @@ using SurveyManagement.Application.Features.Queries.Answer.GetById;
 namespace SurveyManagement.API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     public class AnswerController(IMediator mediator) : ControllerBase
     {
-        // Create
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateAnswerCommandRequest request)
         {
@@ -23,10 +22,9 @@ namespace SurveyManagement.API.Controllers
                 return BadRequest(new { message = "An error occurred while creating the question." });
             }
 
-            return CreatedAtAction(nameof(GetQuestionById), new { id = response.QuestionId }, response);
+            return CreatedAtAction(nameof(GetById), new { id = response.QuestionId }, response);
         }
 
-        // Update
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] UpdateAnswerCommandRequest request)
         {
@@ -59,7 +57,7 @@ namespace SurveyManagement.API.Controllers
 
         // Get all questions
         [HttpGet]
-        public async Task<IActionResult> GetQuestions()
+        public async Task<IActionResult> GetAll()
         {
             var result = await mediator.Send(new GetAnswersQuery());
             return Ok(result);
@@ -67,7 +65,7 @@ namespace SurveyManagement.API.Controllers
 
         // Get question by id
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetQuestionById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
             var result = await mediator.Send(new GetAnswerByIdQuery(id));
             return result != null ? Ok(result) : NotFound();
