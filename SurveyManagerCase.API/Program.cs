@@ -1,17 +1,18 @@
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using SurveyManagement.API.Extensions;
 using SurveyManagement.Application;
 using SurveyManagement.Application.Features.Commands.Survey.Create;
 using SurveyManagement.Application.Mapping;
+using SurveyManagement.Application.Messaging.Consumer;
+using SurveyManagement.Application.Messaging.Publisher;
 using SurveyManagerCase.Persistence.Context;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -19,8 +20,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
                                                 options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQL")));
 builder.Services.AddAutoMapper(typeof(MapProfile));
 builder.Services.AddScopedWithExtension();
+builder.Services.AddCustomServices(builder.Configuration);
 
-builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
+
+
 
 
 var app = builder.Build();

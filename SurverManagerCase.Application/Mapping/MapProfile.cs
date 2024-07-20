@@ -6,6 +6,7 @@ using SurveyManagement.Application.Features.Commands.answerRepository.Create;
 using SurveyManagement.Application.Features.Commands.Survey.Create;
 using SurveyManagement.Application.Features.Commands.Survey.Remove;
 using SurveyManagement.Application.Features.Commands.Survey.Update;
+using SurveyManagement.Application.Messaging.DTOs;
 using SurveyManagement.Domain.Entities;
 
 namespace SurveyManagement.Application.Mapping
@@ -64,9 +65,12 @@ namespace SurveyManagement.Application.Mapping
 
             CreateMap<Answer, AnswerDto>();
             CreateMap<CreateAnswerCommandRequest, Answer>().ReverseMap();
-            CreateMap<Answer, CreateAnswerCommandResponse>().ReverseMap(); ;
+            CreateMap<Answer, CreateAnswerCommandResponse>().ReverseMap();
 
+            CreateMap<SurveyCreatedMessage, CreateSurveyCommandRequest>();
+            CreateMap<SurveyUpdatedMessage, UpdateSurveyCommandRequest>();
 
+            
         }
     }
 }

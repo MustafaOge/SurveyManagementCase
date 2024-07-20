@@ -1,4 +1,5 @@
 ﻿using SurveyManagement.Application.Interfaces.Repositories;
+using SurveyManagement.Application.Messaging.Publisher;
 using SurveyManagement.Persistence.Repositories;
 
 namespace SurveyManagement.API.Extensions
@@ -12,6 +13,8 @@ namespace SurveyManagement.API.Extensions
             services.AddScoped<ISurveyRepository, SurveyRepository>();
             services.AddScoped<IQuestionRepository, QuestionRepository>();
             services.AddScoped<IAnswerRepository, AnswerRepository>();
+            services.AddScoped<SurveyPublisher>();
+
             return services;
         }
 
