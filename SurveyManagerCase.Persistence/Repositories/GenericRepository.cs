@@ -66,5 +66,10 @@ namespace SurveyManagement.Persistence.Repositories
         {
             _dbSet.RemoveRange(items);
         }
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
     }
 }

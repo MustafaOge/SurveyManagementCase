@@ -61,5 +61,11 @@ namespace SurveyManagement.Application.Interfaces.Repositories
         /// </summary>
         /// <param name="items">Collection of entities to be removed.</param>
         void RemoveRange(IEnumerable<TEntity> items);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        Task SaveChangesAsync();
     }
 }

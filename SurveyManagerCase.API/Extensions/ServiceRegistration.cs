@@ -1,7 +1,6 @@
 ﻿using MassTransit;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
 using SurveyManagement.Application.Messaging.Consumer;
+using SurveyManagerCase.Persistence.Context;
 
 namespace SurveyManagement.API.Extensions
 {
@@ -10,9 +9,6 @@ namespace SurveyManagement.API.Extensions
 
         public static void AddCustomServices(this IServiceCollection services, IConfiguration configuration)
         {
-
-
-
             // MediatR
             services.AddMediatR(config => config.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
 
@@ -22,6 +18,15 @@ namespace SurveyManagement.API.Extensions
                 // Consumer Servisleri ekleme
                 x.AddConsumer<SurveyCreatedMessageConsumer>();
                 x.AddConsumer<SurveyUpdatedMessageConsumer>();
+
+                x.AddEntityFrameworkOutbox<AppDbContext>(o =>
+                {
+                    // configure which database lock provider to use (Postgres, SqlServer, or MySql)
+                    o.UsePostgres();
+
+                    // enable the bus outbox
+                    o.UseBusOutbox();
+                });
 
                 x.UsingRabbitMq((context, cfg) =>
                 {

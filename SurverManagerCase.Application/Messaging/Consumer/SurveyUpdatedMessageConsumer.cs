@@ -3,6 +3,7 @@ using MassTransit;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using SurveyManagement.Application.Features.Commands.Survey.Update;
+using SurveyManagement.Application.Interfaces.Repositories;
 using SurveyManagement.Application.Messaging.DTOs;
 
 namespace SurveyManagement.Application.Messaging.Consumer

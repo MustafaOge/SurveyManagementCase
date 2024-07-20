@@ -48,6 +48,9 @@ namespace SurveyManagement.Application.Messaging.Publisher
                     pipe.CorrelationId = Guid.NewGuid();
                 }, tokenSource.Token);
 
+                await _surveyRepository.SaveChangesAsync();
+
+
             }
             catch (Exception ex)
             {
@@ -69,7 +72,9 @@ namespace SurveyManagement.Application.Messaging.Publisher
 
                 var endpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri("queue:survey-updated"));
                 await endpoint.Send(message);
+                await _surveyRepository.SaveChangesAsync();
                 _logger.LogInformation("Survey updated message sent: {Id}", id);
+
             }
             catch (Exception ex)
             {
