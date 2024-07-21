@@ -1,12 +1,17 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using SurveyManagement.API.Extensions;
 using SurveyManagement.Application;
+using SurveyManagement.Application.Configuration;
 using SurveyManagement.Application.Features.Commands.Survey.Create;
 using SurveyManagement.Application.Mapping;
 using SurveyManagement.Application.Messaging.Consumer;
 using SurveyManagement.Application.Messaging.Publisher;
+using SurveyManagement.Application.Validations.Survey;
 using SurveyManagerCase.Persistence.Context;
+using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +26,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddAutoMapper(typeof(MapProfile));
 builder.Services.AddScopedWithExtension();
 builder.Services.AddCustomServices(builder.Configuration);
+builder.Services.AddCustomValidators();
 
 
 
@@ -35,6 +41,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<ErrorHandlerMiddleware>();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

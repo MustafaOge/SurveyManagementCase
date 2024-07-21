@@ -3,6 +3,7 @@ using SurveyManagement.Application.DTOs.Answer;
 using SurveyManagement.Application.DTOs.Question;
 using SurveyManagement.Application.DTOs.Survey;
 using SurveyManagement.Application.Features.Commands.answerRepository.Create;
+using SurveyManagement.Application.Features.Commands.Question.Create;
 using SurveyManagement.Application.Features.Commands.Survey.Create;
 using SurveyManagement.Application.Features.Commands.Survey.Remove;
 using SurveyManagement.Application.Features.Commands.Survey.Update;
@@ -15,6 +16,10 @@ namespace SurveyManagement.Application.Mapping
     {
         public MapProfile()
         {
+            CreateMap<CreateQuestionCommandRequest, Question>();
+            CreateMap<Question, CreateQuestionCommandResponse>();
+
+            
             CreateMap<Survey, SurveyDto>().ReverseMap();
             // CreateQuestionCommandRequest'ten Question'a eşleme
             CreateMap<CreateAnswerCommandRequest, Question>()
