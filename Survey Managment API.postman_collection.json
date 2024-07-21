@@ -1,0 +1,398 @@
+{
+	"info": {
+		"_postman_id": "990ebcae-322e-4c24-b057-0cb4c73c82e8",
+		"name": "Survey Managment API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23710330"
+	},
+	"item": [
+		{
+			"name": "Answer Endpoints",
+			"item": [
+				{
+					"name": "Create Answer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"questionId\": 8,\r\n  \"text\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7284/api/v1/Answer",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7284",
+							"path": [
+								"api",
+								"v1",
+								"Answer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve All Answers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7284/api/v1/Answer",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7284",
+							"path": [
+								"api",
+								"v1",
+								"Answer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Answer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "text",
+									"value": "string",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost:7284/api/v1/Answer/4",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7284",
+							"path": [
+								"api",
+								"v1",
+								"Answer",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Answer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7284/api/v1/Answer/8",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7284",
+							"path": [
+								"api",
+								"v1",
+								"Answer",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Answer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7284/api/v1/Answer/22",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7284",
+							"path": [
+								"api",
+								"v1",
+								"Answer",
+								"22"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**Açıklama**: Cevaplarla ilgili işlemleri yönetir. Cevap ekleme, listeleme, güncelleme, silme ve detaylarını görüntüleme işlemlerini içerir.\n\n- **POST /api/v1/answers**  \n    **Açıklama**: Yeni bir cevap ekler. Gönderilen verilerle yeni bir cevabı oluşturur.\n    \n- **GET /api/v1/answers**  \n    **Açıklama**: Sistemdeki tüm cevapları listeler. Mevcut cevapların bir listesini döndürür.\n    \n- **PUT /api/v1/answers/{id}**  \n    **Açıklama**: Belirli bir cevabı günceller. ID'si verilen cevabın içeriğini değiştirir.\n    \n- **DELETE /api/v1/answers/{id}**  \n    **Açıklama**: Belirli bir cevabı siler. ID'si verilen cevabı veritabanından kaldırır.\n    \n- **GET /api/v1/answers/{id}**  \n    **Açıklama**: Belirli bir cevabı getirir. ID'si verilen cevabın detaylarını döndürür."
+		},
+		{
+			"name": "Question Endpoints",
+			"item": [
+				{
+					"name": "Create Question",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"questionId\": 8,\r\n  \"text\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7284/api/v1/Answer",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7284",
+							"path": [
+								"api",
+								"v1",
+								"Answer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve All Questions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7284/api/v1/Answer",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7284",
+							"path": [
+								"api",
+								"v1",
+								"Answer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Question",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "text",
+									"value": "string",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost:7284/api/v1/Answer/4",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7284",
+							"path": [
+								"api",
+								"v1",
+								"Answer",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Question",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7284/api/v1/Answer/8",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7284",
+							"path": [
+								"api",
+								"v1",
+								"Answer",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Question",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7284/api/v1/Answer/22",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7284",
+							"path": [
+								"api",
+								"v1",
+								"Answer",
+								"22"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**Açıklama**: Sorularla ilgili işlemleri yönetir. Soruları ekleme, listeleme, güncelleme, silme ve detaylarını görüntüleme işlemlerini içerir.\n\n- **POST /api/v1/questions**  \n    **Açıklama**: Yeni bir soru ekler. Gönderilen verilerle yeni bir soru oluşturur.\n    \n- **GET /api/v1/questions**  \n    **Açıklama**: Sistemdeki tüm soruları listeler. Mevcut soruların bir listesini döndürür.\n    \n- **PUT /api/v1/questions/{id}**  \n    **Açıklama**: Belirli bir soruyu günceller. ID'si verilen sorunun içeriğini değiştirir.\n    \n- **DELETE /api/v1/questions/{id}**  \n    **Açıklama**: Belirli bir soruyu siler. ID'si verilen soruyu veritabanından kaldırır.\n    \n- **GET /api/v1/questions/{id}**  \n    **Açıklama**: Belirli bir soruyu getirir. ID'si verilen sorunun detaylarını döndürür."
+		},
+		{
+			"name": "Survey Endpoints",
+			"item": [
+				{
+					"name": "Create Survey",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Postman\",\r\n  \"description\": \"postmandan gelen cevaplar\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7284/api/v1/Surveys",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7284",
+							"path": [
+								"api",
+								"v1",
+								"Surveys"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve All Survey",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7284/api/v1/Answer",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7284",
+							"path": [
+								"api",
+								"v1",
+								"Answer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Survey",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7284/api/v1/Answer/8",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7284",
+							"path": [
+								"api",
+								"v1",
+								"Answer",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Survey",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7284/api/v1/Answer/22",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7284",
+							"path": [
+								"api",
+								"v1",
+								"Answer",
+								"22"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Survey",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**Açıklama**: Anketlerle ilgili işlemleri yönetir. Anket ekleme, listeleme, güncelleme, silme ve detaylarını görüntüleme işlemlerini içerir.\n\n- **POST /api/v1/surveys**  \n    **Açıklama**: Yeni bir anket oluşturur. Gönderilen verilerle yeni bir anket ekler.\n    \n- **GET /api/v1/surveys**  \n    **Açıklama**: Sistemdeki tüm anketleri listeler. Mevcut anketlerin bir listesini döndürür.\n    \n- **PUT /api/v1/surveys/{id}**  \n    **Açıklama**: Belirli bir anketi günceller. ID'si verilen anketin içeriğini değiştirir.\n    \n- **DELETE /api/v1/surveys/{id}**  \n    **Açıklama**: Belirli bir anketi siler. ID'si verilen anketi veritabanından kaldırır.\n    \n- **GET /api/v1/surveys/{id}**  \n    **Açıklama**: Belirli bir anketi getirir. ID'si verilen anketin detaylarını döndürür."
+		}
+	]
+}
