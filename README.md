@@ -36,7 +36,7 @@ Bu proje, anketlerin, soruların ve cevapların yönetildiği bir Anket Yönetim
 - **GET /api/v1/Surveys/{id}**: Belirtilen ID'ye sahip anketin detaylarını getirir.
 ## Postman Koleksiyonu
 
-Postman Koleksiyonu: [Download Link](https://github.com/MustafaOge/SurveyManagementCase/releases/download/v1.0/Survey.Managment.API.postman_collection.json)
+Postman Koleksiyonu: [Download Link](https://github.com/MustafaOge/SurveyManagementCase/releases/download/V1/Survey.Managment.API.postman_collection.json)
 
 API'yi test etmek için bu Postman koleksiyonunu kullanabilirsiniz. Koleksiyonu indirin ve Postman uygulamasında içe aktarın.
 
