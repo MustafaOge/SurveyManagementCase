@@ -34,6 +34,10 @@ Bu proje, anketlerin, soruların ve cevapların yönetildiği bir Anket Yönetim
 - **PUT /api/v1/Surveys/{id}**: Belirtilen ID'ye sahip anketi günceller.
 - **DELETE /api/v1/Surveys/{id}**: Belirtilen ID'ye sahip anketi siler.
 - **GET /api/v1/Surveys/{id}**: Belirtilen ID'ye sahip anketin detaylarını getirir.
+
+## Swagger Dokümantasyonu
+Swagger ile API'yi keşfetmek ve test etmek için [Swagger UI](https://senswisecase.mustafaoge.com/swagger) sayfasını ziyaret edebilirsiniz.
+
 ## Postman Koleksiyonu
 
 Postman Koleksiyonu: [Download Link](https://github.com/MustafaOge/SurveyManagementCase/releases/download/V1/Survey.Managment.API.postman_collection.json)
