@@ -35,7 +35,7 @@ Bu proje, anketlerin, soruların ve cevapların yönetildiği bir Anket Yönetim
 - **DELETE /api/v1/Surveys/{id}**: Belirtilen ID'ye sahip anketi siler.
 - **GET /api/v1/Surveys/{id}**: Belirtilen ID'ye sahip anketin detaylarını getirir.
 
-## Swagger Dokümantasyonu
+## Swagger API
 Swagger ile API'yi keşfetmek ve test etmek için [Swagger UI](https://senswisecase.mustafaoge.com/swagger) sayfasını ziyaret edebilirsiniz.
 
 ## Postman Koleksiyonu
