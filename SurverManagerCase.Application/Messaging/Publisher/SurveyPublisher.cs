@@ -1,14 +1,7 @@
-﻿using AutoMapper;
-using MassTransit;
+﻿using MassTransit;
 using Microsoft.Extensions.Logging;
 using SurveyManagement.Application.Interfaces.Repositories;
 using SurveyManagement.Application.Messaging.DTOs;
-using SurveyManagement.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SurveyManagement.Application.Messaging.Publisher
 {

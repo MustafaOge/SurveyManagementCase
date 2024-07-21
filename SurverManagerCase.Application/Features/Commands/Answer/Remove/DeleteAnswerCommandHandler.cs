@@ -5,9 +5,6 @@ namespace SurveyManagement.Application.Features.Commands.Answer.Remove
 {
     public class DeleteAnswerCommandHandler(IAnswerRepository answerRepository) : IRequestHandler<DeleteAnswerCommandRequest, DeleteAnswerCommandResponse>
     {
-  
-
-
         public async Task<DeleteAnswerCommandResponse> Handle(DeleteAnswerCommandRequest request, CancellationToken cancellationToken)
         {
             var question = await answerRepository.GetByIdAsync(request.Id);

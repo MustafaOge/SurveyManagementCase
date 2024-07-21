@@ -5,8 +5,6 @@ namespace SurveyManagement.Application.Features.Commands.Answer.Update
 {
     public class UpdateAnswerCommandHandler(IAnswerRepository answerRepository) : IRequestHandler<UpdateAnswerCommandRequest, UpdateAnswerCommandResponse>
     {
-
-
         public async Task<UpdateAnswerCommandResponse> Handle(UpdateAnswerCommandRequest request, CancellationToken cancellationToken)
         {
             var answer = await answerRepository.GetByIdAsync(request.Id);

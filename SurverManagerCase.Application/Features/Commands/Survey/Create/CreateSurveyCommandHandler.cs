@@ -6,7 +6,6 @@ namespace SurveyManagement.Application.Features.Commands.Survey.Create
 {
     public class CreateSurveyCommandHandler(IMapper mapper, ISurveyRepository surveyRepository) : IRequestHandler<CreateSurveyCommandRequest, CreateSurveyCommandResponse>
     {
-
         public async Task<CreateSurveyCommandResponse> Handle(CreateSurveyCommandRequest request, CancellationToken cancellationToken)
         {
             var survey = mapper.Map<SurveyManagement.Domain.Entities.Survey>(request);

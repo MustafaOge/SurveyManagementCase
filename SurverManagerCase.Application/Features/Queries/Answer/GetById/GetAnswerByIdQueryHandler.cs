@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
 using SurveyManagement.Application.DTOs.Answer;
-using SurveyManagement.Application.DTOs.Question;
-using SurveyManagement.Application.Features.Queries.Question.GetById;
 using SurveyManagement.Application.Interfaces.Repositories;
 
 namespace SurveyManagement.Application.Features.Queries.Answer.GetById

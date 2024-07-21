@@ -28,8 +28,6 @@ namespace SurveyManagement.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] UpdateAnswerCommandRequest request)
         {
-
-
             var response = await mediator.Send(request);
 
             if (response == null)

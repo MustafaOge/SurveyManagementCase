@@ -7,7 +7,6 @@ namespace SurveyManagement.Application.Features.Queries.Question.GetAll
 {
     public class GetQuestionsQueryHandler(IMapper mapper, IQuestionRepository questionRepository) : IRequestHandler<GetQuestionsQuery, IEnumerable<QuestionDto>>
     {
-
         public async Task<IEnumerable<QuestionDto>> Handle(GetQuestionsQuery request, CancellationToken cancellationToken)
         {
             var questions = await questionRepository.GetAllAsync(x=> true);

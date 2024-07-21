@@ -1,5 +1,5 @@
-﻿using FluentValidation.AspNetCore;
-using FluentValidation;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
 using SurveyManagement.Application.Validations.Answer;
 using SurveyManagement.Application.Validations.Question;
 using SurveyManagement.Application.Validations.Survey;

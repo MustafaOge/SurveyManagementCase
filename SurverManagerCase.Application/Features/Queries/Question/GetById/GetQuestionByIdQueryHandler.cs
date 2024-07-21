@@ -7,7 +7,6 @@ namespace SurveyManagement.Application.Features.Queries.Question.GetById
 {
     public class GetQuestionByIdQueryHandler(IMapper mapper, IQuestionRepository questionRepository) : IRequestHandler<GetQuestionByIdQuery, QuestionDto>
     {
-
         public async Task<QuestionDto> Handle(GetQuestionByIdQuery request, CancellationToken cancellationToken)
         {
             var question = await questionRepository.GetByIdAsync(request.Id);

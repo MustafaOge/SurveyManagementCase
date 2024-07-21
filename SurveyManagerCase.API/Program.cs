@@ -1,18 +1,9 @@
-using FluentValidation;
-using FluentValidation.AspNetCore;
-using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using SurveyManagement.API.Extensions;
-using SurveyManagement.Application;
 using SurveyManagement.Application.Configuration;
-using SurveyManagement.Application.Features.Commands.Survey.Create;
 using SurveyManagement.Application.Mapping;
-using SurveyManagement.Application.Messaging.Consumer;
-using SurveyManagement.Application.Messaging.Publisher;
-using SurveyManagement.Application.Validations.Survey;
+using SurveyManagement.Persistence.Seeds;
 using SurveyManagerCase.Persistence.Context;
-using System.ComponentModel.DataAnnotations;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +12,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//builder.Services.AddDbContext<AppDbContext>(options =>
+//               options.UseInMemoryDatabase("InMemoryDb"));
 builder.Services.AddDbContext<AppDbContext>(options =>
                                                 options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQL")));
 builder.Services.AddAutoMapper(typeof(MapProfile));
@@ -30,16 +23,18 @@ builder.Services.AddCustomValidators();
 
 
 
-
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+
+app.UseCors("AllowAll");
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();   
-    app.UseSwaggerUI();
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+    c.RoutePrefix = "swagger"; // Swagger UI için eriþim yolu
+});
+
 
 app.UseMiddleware<ErrorHandlerMiddleware>();
 app.UseHttpsRedirection();
@@ -48,4 +43,16 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+await SeedDatabase(app.Services);
+
 app.Run();
+
+
+static async Task SeedDatabase(IServiceProvider services)
+{
+    using (var scope = services.CreateScope())
+    {
+        var seedService = scope.ServiceProvider.GetRequiredService<ISeedService>();
+        await seedService.SeedAsync(); // Sahte verileri ekle
+    }
+}

@@ -12,13 +12,13 @@ namespace SurveyManagement.API.Controllers
     [Route("api/v1/[controller]")]
     public class QuestionsController(IMediator mediator) : ControllerBase
     {
-      
+
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CreateQuestionCommandRequest  request)
+        public async Task<IActionResult> Create([FromBody] CreateQuestionCommandRequest request)
         {
             var response = await mediator.Send(request);
 
-            if (response == null )
+            if (response == null)
             {
                 return BadRequest(new { message = "An error occurred while creating the question." });
             }
